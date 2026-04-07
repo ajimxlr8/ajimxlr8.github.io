@@ -1,143 +1,146 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Md. Ajim Hossain" />
-  <title>Ajim Hossain</title>
+:root {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --accent: #6b3d5c;
+  --border: #e5e7eb;
+  --inverse-text: #e5e7eb;
+}
 
-  <link rel="icon" href="favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
 
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+/* Layout */
+.container {
+  max-width: 72rem;
+  margin: auto;
+  padding: 1rem;
+}
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#home">
-        <img class="brand__logo" src="ajim-logo.jpg" alt="Ajim logo" />
-        <span class="brand__name">Ajim Hossain</span>
-      </a>
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: #2c1e28;
+  color: white;
+}
 
-      <nav class="primary-nav">
-        <button type="button" class="nav-toggle" aria-controls="nav-list" aria-expanded="false">
-          <span class="nav-toggle__bar"></span>
-          <span class="nav-toggle__bar"></span>
-          <span class="nav-toggle__bar"></span>
-        </button>
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-        <ul id="nav-list" class="nav-list">
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#education" class="nav-link">Education</a></li>
-          <li><a href="#leadership" class="nav-link">Leadership</a></li>
-          <li><a href="#research" class="nav-link">Research</a></li>
-          <li><a href="#awards" class="nav-link">Awards</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+/* Nav */
+.nav-list {
+  display: none;
+}
+.nav-list.is-open {
+  display: block;
+}
 
-  <main id="main">
+/* Sections */
+.section {
+  padding: 3rem 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s;
+}
+.section.in-view {
+  opacity: 1;
+  transform: none;
+}
 
-    <!-- HOME -->
-    <section id="home" class="section">
-      <div class="container hero">
-        <img class="profile-photo reveal" src="ajim-photo-home.jpg" alt="Ajim portrait" loading="lazy" />
-        <div class="hero__body reveal">
-          <h1 class="h1">Md. Ajim Hossain</h1>
-          <p class="lead">Chemical Engineering student at BUET interested in biofuels and sustainability.</p>
-        </div>
-      </div>
-    </section>
+/* Header animation */
+.section__header {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: 0.6s;
+}
+.section__header.in-view {
+  opacity: 1;
+  transform: none;
+}
 
-    <!-- EDUCATION -->
-    <section id="education" class="section">
-      <div class="container">
-        <h2 class="h2 section__header">Education</h2>
+/* Cards */
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+.cards {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-        <div class="grid cards">
-          <article class="card reveal">
-            <h3 class="h3">BSc Chemical Engineering</h3>
-            <p>BUET | 2022–Present</p>
-          </article>
-        </div>
-      </div>
-    </section>
+/* FIXED research span */
+.research-span {
+  grid-column: span 1;
+}
+@media (min-width: 1024px) {
+  .research-span {
+    grid-column: span 2;
+  }
+}
 
-    <!-- RESEARCH -->
-    <section id="research" class="section">
-      <div class="container">
-        <h2 class="h2 section__header">Research & Projects</h2>
+.card {
+  border: 1px solid var(--border);
+  padding: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.5s;
+}
+.card.in-view {
+  opacity: 1;
+  transform: none;
+}
 
-        <!-- FIXED GRID -->
-        <div class="grid cards">
-          <article class="card reveal research-span">
-            <h3 class="h3">LABSA Plant Analysis</h3>
-            <p>Economic + safety analysis of 100 MTPD plant.</p>
-          </article>
+/* Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(15px);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
 
-          <article class="card reveal">
-            <h3 class="h3">ABRI</h3>
-            <p>Bioengineering research experience.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+/* Bullet animation FIX */
+.bullet-list li {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: 0.4s;
+}
+.bullet-list li.in-view {
+  opacity: 1;
+  transform: none;
+}
 
-    <!-- CONTACT -->
-    <section id="contact" class="section section--inverse">
-      <div class="container">
-        <h2 class="h2 section__header">Contact</h2>
+/* Contact FIX */
+.section--inverse {
+  background: #111827;
+  color: var(--inverse-text);
+}
+.section--inverse .h2 {
+  color: var(--inverse-text);
+}
 
-        <div class="card reveal">
-          <p>Email: <a href="mailto:ajim.che.buet@gmail.com">ajim.che.buet@gmail.com</a></p>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <p>&copy; <span id="year"></span> Ajim Hossain</p>
-  </footer>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const navToggle = document.querySelector('.nav-toggle');
-      const navList = document.getElementById('nav-list');
-
-      navToggle.addEventListener('click', () => {
-        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', String(!expanded));
-        navList.classList.toggle('is-open');
-      });
-
-      // Observer FIXED
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-
-            // Bullet animation fix
-            if (entry.target.classList.contains('bullet-list')) {
-              entry.target.querySelectorAll('li').forEach((li, i) => {
-                setTimeout(() => li.classList.add('in-view'), i * 80);
-              });
-            }
-          }
-        });
-      }, { threshold: 0.12 });
-
-      document.querySelectorAll('.reveal, .section, .section__header, .site-footer, .bullet-list')
-        .forEach(el => io.observe(el));
-
-      document.getElementById('year').textContent = new Date().getFullYear();
-    });
-  </script>
-
-</body>
-</html>
+/* Footer FIX */
+.site-footer {
+  background: #7F557E;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  opacity: 0;
+  transition: 0.8s;
+}
+.site-footer.in-view {
+  opacity: 1;
+}
