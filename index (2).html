@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pocket Hand Cricket</title>
+    <style>
+        :root {
+            --primary: #2E7D32;
+            --primary-dark: #1B5E20;
+            --accent: #FFD700;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --bg-color: #f0f4f8;
+            --card-bg: #ffffff;
+            --danger: #d32f2f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none; /* Prevent text selection on rapid taps */
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* --- Header & Scoreboard --- */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--text-light);
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            flex-shrink: 0;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .scoreboard {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(0,0,0,0.2);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .score-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .score-val {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        /* --- Main Game Area --- */
+        #game-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .status-pill {
+            background-color: #e0e0e0;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .battle-display {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 350px;
+            margin-bottom: 20px;
+        }
+
+        .move-card {
+            width: 45%;
+            aspect-ratio: 1/1;
+            background: var(--card-bg);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .move-card.active {
+            border: 2px solid var(--primary);
+        }
+
+        .move-label {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .move-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .commentary {
+            height: 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .commentary.out { color: var(--danger); }
+        .commentary.six { color: var(--accent); text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+
+        /* --- Controls --- */
+        #controls {
+            padding: 15px;
+            background: #fff;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -2px 15px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+            padding-bottom: max(20px, env(safe-area-inset-bottom));
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .run-btn {
+            background: #f5f5f5;
+            border: none;
+            border-radius: 12px;
+            padding: 15px 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.1s;
+            box-shadow: 0 2px 0 #ddd;
+        }
+
+        .run-btn:active {
+            transform: translateY(2px);
+            box-shadow: none;
+            background-color: #eee;
+        }
+
+        .run-btn.primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 2px 0 var(--primary-dark);
+        }
+
+        /* --- Overlays / Modals --- */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            width: 85%;
+            max-width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .modal-text {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .cta-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.4);
+            transition: transform 0.1s;
+        }
+
+        .cta-btn:active { transform: scale(0.96); }
+
+        /* --- Animations --- */
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        .shake-anim { animation: shake 0.4s ease-in-out; }
+
+        @keyframes popNumber {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .pop-anim { animation: popNumber 0.3s ease-out forwards; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🏏 Hand Cricket</h1>
+        <div class="scoreboard">
+            <div class="score-box">
+                <span>Player</span>
+                <span class="score-val" id="score-player">0</span>
+            </div>
+            <div class="score-box">
+                <span id="target-label" style="opacity: 0.5;">Target</span>
+                <span class="score-val" id="score-target">-</span>
+            </div>
+            <div class="score-box">
+                <span>CPU</span>
+                <span class="score-val" id="score-cpu">0</span>
+            </div>
+        </div>
+    </header>
+
+    <div id="game-area">
+        <div id="game-status" class="status-pill">1st Innings: You Bat</div>
+
+        <div class="battle-display">
+            <div class="move-card active">
+                <span class="move-label">YOU</span>
+                <span class="move-number" id="hand-player">-</span>
+            </div>
+            <div class="move-card">
+                <span class="move-label">CPU</span>
+                <span class="move-number" id="hand-cpu">-</span>
+            </div>
+        </div>
+
+        <div id="commentary" class="commentary">Tap a number to play!</div>
+    </div>
+
+    <div id="controls">
+        <div class="input-grid">
+            <button class="run-btn" onclick="game.playTurn(0)">0</button>
+            <button class="run-btn" onclick="game.playTurn(1)">1</button>
+            <button class="run-btn" onclick="game.playTurn(2)">2</button>
+            <button class="run-btn" onclick="game.playTurn(3)">3</button>
+            <button class="run-btn" onclick="game.playTurn(4)">4</button>
+            <button class="run-btn" onclick="game.playTurn(5)">5</button>
+            <button class="run-btn" onclick="game.playTurn(6)">6</button>
+        </div>
+    </div>
+
+    <div id="modal-overlay" class="overlay visible">
+        <div class="modal-card">
+            <h2 class="modal-title" id="modal-heading">Play Cricket!</h2>
+            <p class="modal-text" id="modal-msg">You bat first.<br>Choose a number (0-6).<br>If numbers match, you're OUT!</p>
+            <button class="cta-btn" onclick="game.init()">Start Match</button>
+        </div>
+    </div>
+
+    <script>
+        class HandCricket {
+            constructor() {
+                // DOM Elements
+                this.dom = {
+                    scorePlayer: document.getElementById('score-player'),
+                    scoreCpu: document.getElementById('score-cpu'),
+                    scoreTarget: document.getElementById('score-target'),
+                    targetLabel: document.getElementById('target-label'),
+                    handPlayer: document.getElementById('hand-player'),
+                    handCpu: document.getElementById('hand-cpu'),
+                    status: document.getElementById('game-status'),
+                    commentary: document.getElementById('commentary'),
+                    modal: document.getElementById('modal-overlay'),
+                    modalHeading: document.getElementById('modal-heading'),
+                    modalMsg: document.getElementById('modal-msg'),
+                    ctaBtn: document.querySelector('.cta-btn')
+                };
+
+                // Game State
+                this.state = {
+                    innings: 1, // 1 = Player Bat, 2 = CPU Bat
+                    playerScore: 0,
+                    cpuScore: 0,
+                    target: null,
+                    isGameOver: false
+                };
+            }
+
+            init() {
+                // Reset State
+                this.state = {
+                    innings: 1,
+                    playerScore: 0,
+                    cpuScore: 0,
+                    target: null,
+                    isGameOver: false
+                };
+
+                // Reset UI
+                this.dom.modal.classList.remove('visible');
+                this.dom.scorePlayer.innerText = '0';
+                this.dom.scoreCpu.innerText = '0';
+                this.dom.scoreTarget.innerText = '-';
+                this.dom.handPlayer.innerText = '-';
+                this.dom.handCpu.innerText = '-';
+                this.dom.targetLabel.style.opacity = '0.5';
+                this.dom.status.innerText = "1st Innings: You Bat";
+                this.dom.commentary.innerText = "Make your move!";
+                this.dom.commentary.className = 'commentary';
+            }
+
+            playTurn(playerRun) {
+                if (this.state.isGameOver) return;
+
+                const cpuRun = Math.floor(Math.random() * 7);
+                
+                // Update Visuals
+                this.updateHands(playerRun, cpuRun);
+
+                // Logic based on innings
+                if (this.state.innings === 1) {
+                    this.handleInningsOne(playerRun, cpuRun);
+                } else {
+                    this.handleInningsTwo(playerRun, cpuRun);
+                }
+            }
+
+            updateHands(p, c) {
+                // Update DOM text
+                this.dom.handPlayer.innerText = p;
+                this.dom.handCpu.innerText = c;
+
+                // Add pop animation
+                this.dom.handPlayer.classList.remove('pop-anim');
+                this.dom.handCpu.classList.remove('pop-anim');
+                void this.dom.handPlayer.offsetWidth; // Trigger reflow
+                this.dom.handPlayer.classList.add('pop-anim');
+                this.dom.handCpu.classList.add('pop-anim');
+            }
+
+            handleInningsOne(p, c) {
+                // Player Batting
+                if (p === c) {
+                    // OUT
+                    this.dom.commentary.innerText = "HOWZAT! You are OUT!";
+                    this.dom.commentary.className = 'commentary out';
+                    this.triggerShake();
+                    
+                    // Set Target
+                    this.state.target = this.state.playerScore + 1;
+                    this.dom.scoreTarget.innerText = this.state.target;
+                    this.dom.targetLabel.style.opacity = '1';
+
+                    // Show Modal for Innings Break
+                    setTimeout(() => {
+                        this.showModal(
+                            "Innings Break",
+                            `You scored ${this.state.playerScore}.<br>CPU needs ${this.state.target} to win.`,
+                            "Start Defense",
+                            () => this.startSecondInnings()
+                        );
+                    }, 1000);
+
+                } else {
+                    // Add Score
+                    this.state.playerScore += p;
+                    this.dom.scorePlayer.innerText = this.state.playerScore;
+                    this.setCommentary(p, "You hit");
+                }
+            }
+
+            handleInningsTwo(p, c) {
+                // CPU Batting (Player Bowling)
+                // Note: In hand cricket, player input matters for matching, but CPU run is added to score
+                
+                if (p === c) {
+                    // CPU OUT
+                    this.dom.commentary.innerText = "CLEAN BOWLED! CPU OUT!";
+                    this.dom.commentary.className = 'commentary out';
+                    this.triggerShake();
+                    this.endGame(true); // Player Wins
+                } else {
+                    // Add Score to CPU
+                    this.state.cpuScore += c;
+                    this.dom.scoreCpu.innerText = this.state.cpuScore;
+                    this.setCommentary(c, "CPU hits");
+
+                    // Check if CPU chased target
+                    if (this.state.cpuScore >= this.state.target) {
+                        this.endGame(false); // CPU Wins
+                    }
+                }
+            }
+
+            startSecondInnings() {
+                this.state.innings = 2;
+                this.dom.status.innerText = `2nd Innings: Defend ${this.state.target}`;
+                this.dom.commentary.innerText = "Bowl (Pick a number)";
+                this.dom.commentary.className = 'commentary';
+                this.dom.modal.classList.remove('visible');
+                
+                // Clear hands for fresh start
+                this.dom.handPlayer.innerText = '-';
+                this.dom.handCpu.innerText = '-';
+            }
+
+            setCommentary(run, prefix) {
+                this.dom.commentary.className = 'commentary';
+                if (run === 6 || run === 4) {
+                    this.dom.commentary.classList.add('six');
+                    this.dom.commentary.innerText = `BOOM! ${prefix} a ${run}!`;
+                } else if (run === 0) {
+                    this.dom.commentary.innerText = "Good defense (0)";
+                } else {
+                    this.dom.commentary.innerText = `${prefix} ${run} run${run > 1 ? 's' : ''}`;
+                }
+            }
+
+            triggerShake() {
+                const area = document.getElementById('game-area');
+                area.classList.remove('shake-anim');
+                void area.offsetWidth;
+                area.classList.add('shake-anim');
+            }
+
+            endGame(playerWon) {
+                this.state.isGameOver = true;
+                let title, msg;
+
+                if (playerWon) {
+                    title = "VICTORY!";
+                    msg = `You won by ${this.state.playerScore - this.state.cpuScore} runs!`;
+                } else {
+                    title = "DEFEAT";
+                    msg = "The Computer chased down the target.";
+                }
+
+                setTimeout(() => {
+                    this.showModal(title, msg, "Play Again", () => this.init());
+                }, 1000);
+            }
+
+            showModal(title, msg, btnText, action) {
+                this.dom.modalHeading.innerText = title;
+                this.dom.modalMsg.innerHTML = msg;
+                this.dom.ctaBtn.innerText = btnText;
+                this.dom.ctaBtn.onclick = action;
+                this.dom.modal.classList.add('visible');
+            }
+        }
+
+        // Initialize Game
+        const game = new HandCricket();
+    </script>
+</body>
+</html>
