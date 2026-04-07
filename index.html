@@ -1,54 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Meta & SEO -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Md. Ajim Hossain — Chemical Engineering student at BUET with interests in biofuels, sustainable processes, leadership, and research projects." />
-  <meta name="author" content="Md. Ajim Hossain" />
-  <meta name="keywords" content="Chemical Engineering, BUET, Biofuels, Research, Sustainability, Process Design, Ajim Hossain" />
-  <meta name="color-scheme" content="light" />
-  <meta property="og:title" content="Md. Ajim Hossain | Chemical Engineering Portfolio" />
-  <meta property="og:description" content="Portfolio of Md. Ajim Hossain — Chemical Engineering student at BUET with interests in biofuels, sustainability, and research." />
-  <meta property="og:image" content="ajim-photo-home.jpg" />
-  <meta property="og:type" content="website" />
+  <meta name="description" content="Portfolio of Md. Ajim Hossain" />
   <title>Ajim Hossain</title>
 
-  <!-- Favicon -->
   <link rel="icon" href="favicon.ico" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-
-  <!-- CSS -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" role="banner">
+  <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#home" aria-label="Go to home">
-        <img class="brand__logo" src="ajim-logo.jpg" alt="Personal logo of Md. Ajim Hossain" width="48" height="48" />
+      <a class="brand" href="#home">
+        <img class="brand__logo" src="ajim-logo.jpg" alt="Ajim logo" />
         <span class="brand__name">Ajim Hossain</span>
       </a>
 
-      <nav class="primary-nav" aria-label="Primary">
-        <button class="nav-toggle" aria-controls="nav-list" aria-expanded="false">
-          <span class="nav-toggle__bar" aria-hidden="true"></span>
-          <span class="nav-toggle__bar" aria-hidden="true"></span>
-          <span class="nav-toggle__bar" aria-hidden="true"></span>
-          <span class="visually-hidden">Menu</span>
+      <nav class="primary-nav">
+        <button type="button" class="nav-toggle" aria-controls="nav-list" aria-expanded="false">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
         </button>
 
         <ul id="nav-list" class="nav-list">
           <li><a href="#home" class="nav-link">Home</a></li>
           <li><a href="#education" class="nav-link">Education</a></li>
           <li><a href="#leadership" class="nav-link">Leadership</a></li>
-          <li><a href="#research" class="nav-link">Research &amp; Projects</a></li>
+          <li><a href="#research" class="nav-link">Research</a></li>
           <li><a href="#awards" class="nav-link">Awards</a></li>
           <li><a href="#skills" class="nav-link">Skills</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -58,17 +42,14 @@
   </header>
 
   <main id="main">
-    <!-- HERO / HOME -->
+
+    <!-- HOME -->
     <section id="home" class="section">
-      <div class="container">
-        <div class="hero">
-          <div class="hero__media">
-            <img class="profile-photo reveal" src="ajim-photo-home.jpg" alt="Portrait of Md. Ajim Hossain" width="256" height="256" loading="lazy" />
-          </div>
-          <div class="hero__body reveal">
-            <h1 class="h1">Md. Ajim Hossain</h1>
-            <p class="lead">I’m a Chemical Engineering student at BUET, passionate about advancing research in biofuels and sustainable chemical processes. With a strong foundation in leadership, data analysis, and process design, I aim to contribute to innovative solutions in chemical engineering.</p>
-          </div>
+      <div class="container hero">
+        <img class="profile-photo reveal" src="ajim-photo-home.jpg" alt="Ajim portrait" loading="lazy" />
+        <div class="hero__body reveal">
+          <h1 class="h1">Md. Ajim Hossain</h1>
+          <p class="lead">Chemical Engineering student at BUET interested in biofuels and sustainability.</p>
         </div>
       </div>
     </section>
@@ -76,74 +57,12 @@
     <!-- EDUCATION -->
     <section id="education" class="section">
       <div class="container">
-        <header class="section__header">
-          <h2 class="h2">Education</h2>
-        </header>
+        <h2 class="h2 section__header">Education</h2>
 
         <div class="grid cards">
           <article class="card reveal">
-            <h3 class="h3">Bachelor of Science in Chemical Engineering</h3>
-            <p>Bangladesh University of Engineering and Technology (BUET) | July 2022 – Present</p>
-            <p><strong>CGPA:</strong> 3.83/4.00 (4 terms), Top 10% of the class</p>
-          </article>
-
-          <article class="card reveal">
-            <h3 class="h3">Higher Secondary Certificate (HSC)</h3>
-            <p>Jonail Degree College (JDC) | July 2019 – February 2022</p>
-            <p><strong>GPA:</strong> 5.00/5.00, 98% marks in PCM</p>
-          </article>
-
-          <article class="card reveal">
-            <h3 class="h3">Secondary School Certificate (SSC)</h3>
-            <p>St. Louis High School | January 2014 – February 2019</p>
-            <p><strong>GPA:</strong> 5.00/5.00, 93.5% marks in PCMM</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- LEADERSHIP -->
-    <section id="leadership" class="section">
-      <div class="container">
-        <header class="section__header">
-          <h2 class="h2">Leadership</h2>
-        </header>
-
-        <div class="grid cards">
-          <article class="card reveal">
-            <h3 class="h3">Regional Chair, Southern Asia Regional Subcommittee, AIChE Executive Students Committee</h3>
-            <p><em>Current Role</em></p>
-            <p>Leading 6 liaisons to connect and revitalize more than 50 student chapters across Southern Asia, establishing communication channels, and organizing virtual regional meetings to foster engagement and collaboration.</p>
-          </article>
-
-          <article class="card reveal">
-            <h3 class="h3">Co-Chair, BUET AIChE Chapter, Events Management Team</h3>
-            <p><em>Current Role</em></p>
-            <p>Directed the launch of new competitions, initiated an industrial tour program, and coordinated expert webinars, enhancing student engagement and professional development opportunities.</p>
-          </article>
-
-          <article class="card reveal">
-            <h3 class="h3">Regional Liaison, AIChE Executive Students Committee</h3>
-            <p>2024–2025</p>
-            <p>Revived communication with inactive chapters by contacting leaders, scheduling meetings, and creating WhatsApp groups, while co-organizing virtual regional meetings with diverse participation.</p>
-          </article>
-
-          <article class="card reveal">
-            <h3 class="h3">Volunteer &amp; Team Lead, US Edu Fair 2025</h3>
-            <p>2025</p>
-            <p>Managed crowd control and logistics, leading a team to ensure smooth event operations.</p>
-          </article>
-
-          <article class="card reveal">
-            <h3 class="h3">Invigilator, EXCELista 2024 AutoCAD Competition</h3>
-            <p>2024</p>
-            <p>Oversaw the competition, ensuring fairness and smooth execution under pressure.</p>
-          </article>
-
-          <article class="card reveal">
-            <h3 class="h3">Competition Planner, Chemical Day 2023</h3>
-            <p>2023</p>
-            <p>Assisted in planning student competitions, working efficiently under tight deadlines.</p>
+            <h3 class="h3">BSc Chemical Engineering</h3>
+            <p>BUET | 2022–Present</p>
           </article>
         </div>
       </div>
@@ -152,76 +71,18 @@
     <!-- RESEARCH -->
     <section id="research" class="section">
       <div class="container">
-        <header class="section__header">
-          <h2 class="h2">Research &amp; Projects</h2>
-        </header>
+        <h2 class="h2 section__header">Research & Projects</h2>
 
-           <article class="card reveal research-span">
-            <h3 class="h3">Analysis of a 100 MTPD LABSA Production Plant</h3>
-            <p><strong>ChE 308: Chemical Process Analysis, BUET | 2025</strong></p>
-            <p>Contributed to a comprehensive study evaluating the technical and economic feasibility of a 100 MTPD Linear Alkylbenzene Sulfonic Acid (LABSA) production plant. Key contributions included:</p>
-            <ul class="bullet-list">
-              <li>Authored the abstract, summarizing the project's scope and findings.</li>
-              <li>Conducted economic analysis, estimating annual revenue of USD 66M, gross profit of USD 6.96M, and net profit of USD 5.05M.</li>
-              <li>Assisted in hazard and risk identification, emphasizing safety considerations for industrial-scale production.</li>
-            </ul>
-            <p>The project demonstrated the application of chemical engineering principles, including material and energy balances, to assess a financially promising industrial setup.</p>
-          </article>
-          
-          <article class="card reveal">
-            <h3 class="h3">Applied Bioengineering Research Incubator (ABRI)</h3>
-            <p>February 2024 – Present</p>
-            <p>Collaborated with senior researchers on project design and execution. Gained hands-on experience in dry and wet labs, making independent decisions on project modeling.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- AWARDS -->
-    <section id="awards" class="section">
-      <div class="container">
-        <header class="section__header">
-          <h2 class="h2">Awards &amp; Scholarships</h2>
-        </header>
-
+        <!-- FIXED GRID -->
         <div class="grid cards">
-          <article class="card reveal">
-            <p><strong>Dean’s List Award</strong> | 2023, 2024</p>
-            <p>Recognized for maintaining a high CGPA for two consecutive academic years at BUET.</p>
+          <article class="card reveal research-span">
+            <h3 class="h3">LABSA Plant Analysis</h3>
+            <p>Economic + safety analysis of 100 MTPD plant.</p>
           </article>
 
           <article class="card reveal">
-            <p><strong>Merit List Scholarship</strong> | 2 Years</p>
-            <p>Awarded for academic excellence during undergraduate studies.</p>
-          </article>
-
-          <article class="card reveal">
-            <p><strong>Technical Scholarship</strong> | 4 Academic Terms</p>
-            <p>Received for outstanding performance at BUET.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-      <div class="container">
-        <header class="section__header">
-          <h2 class="h2">Skills</h2>
-        </header>
-
-        <div class="grid cards">
-          <article class="card reveal">
-            <p><strong>Programming Languages:</strong> Python, Matlab</p>
-          </article>
-          <article class="card reveal">
-            <p><strong>Office Tools:</strong> PowerPoint, Word, Excel</p>
-          </article>
-          <article class="card reveal">
-            <p><strong>Data Analysis:</strong> SPSS, ORIGIN</p>
-          </article>
-          <article class="card reveal">
-            <p><strong>Laboratory Equipments:</strong> FTIR, UV-Spectrometer</p>
+            <h3 class="h3">ABRI</h3>
+            <p>Bioengineering research experience.</p>
           </article>
         </div>
       </div>
@@ -230,34 +91,18 @@
     <!-- CONTACT -->
     <section id="contact" class="section section--inverse">
       <div class="container">
-        <header class="section__header">
-          <h2 class="h2">Contact</h2>
-        </header>
+        <h2 class="h2 section__header">Contact</h2>
 
-        <div class="grid">
-          <article class="card card--transparent reveal">
-            <address>
-              <p><strong>Email:</strong>
-                <a href="mailto:ajim.che.buet@gmail.com">ajim.che.buet@gmail.com</a>,
-                <a href="mailto:2102002@che.buet.ac.bd">2102002@che.buet.ac.bd</a>
-              </p>
-              <p><strong>Social Media:</strong></p>
-              <ul class="bullet-list">
-                <li><a href="https://facebook.com/cap.ajim" target="_blank" rel="noopener">Facebook</a></li>
-                <li><a href="https://instagram.com/cap.aj.jr" target="_blank" rel="noopener">Instagram</a></li>
-                <li><a href="https://linkedin.com/in/ajim2102002" target="_blank" rel="noopener">LinkedIn</a></li>
-              </ul>
-            </address>
-          </article>
+        <div class="card reveal">
+          <p>Email: <a href="mailto:ajim.che.buet@gmail.com">ajim.che.buet@gmail.com</a></p>
         </div>
       </div>
     </section>
+
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <p>&copy; <span id="year"></span> Md. Ajim Hossain. All rights reserved.</p>
-    </div>
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Ajim Hossain</p>
   </footer>
 
   <script>
@@ -271,34 +116,28 @@
         navList.classList.toggle('is-open');
       });
 
-      // Close mobile menu when clicking a link
-      navList.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          if (navList.classList.contains('is-open')) {
-            navList.classList.remove('is-open');
-            navToggle.setAttribute('aria-expanded', 'false');
+      // Observer FIXED
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+
+            // Bullet animation fix
+            if (entry.target.classList.contains('bullet-list')) {
+              entry.target.querySelectorAll('li').forEach((li, i) => {
+                setTimeout(() => li.classList.add('in-view'), i * 80);
+              });
+            }
           }
         });
-      });
+      }, { threshold: 0.12 });
 
-      // Intersection Observer for reveal animations
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (!prefersReduced) {
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('in-view');
-          });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-      } else {
-        document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
-      }
+      document.querySelectorAll('.reveal, .section, .section__header, .site-footer, .bullet-list')
+        .forEach(el => io.observe(el));
 
-      // Year update
       document.getElementById('year').textContent = new Date().getFullYear();
     });
   </script>
 
-  <script src="animations.js" defer></script>
 </body>
 </html>
