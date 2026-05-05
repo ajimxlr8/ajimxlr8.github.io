@@ -18,6 +18,7 @@
       </button>
       <ul class="nav__links" id="navLinks">
         <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
         <li><a href="research.html" class="nav__link">Research</a></li>
         <li><a href="leadership.html" class="nav__link">Leadership</a></li>
         <li><a href="skills.html" class="nav__link">Skills</a></li>
@@ -43,7 +44,6 @@
     <div class="container">
       <div class="contact-layout">
 
-        <!-- CONTACT INFO -->
         <div class="contact-info reveal-up" style="--d:0.1s">
           <h3 class="contact-info__title">Contact Details</h3>
 
@@ -83,19 +83,19 @@
             <span class="contact-item__icon">in</span>
             <div>
               <p class="contact-item__label">LinkedIn</p>
-              <a href="https://linkedin.com/in/" target="_blank" class="contact-item__value">LinkedIn Profile →</a>
+              <!-- Replace the href with your actual LinkedIn URL -->
+              <a href="https://linkedin.com/in/YOUR-LINKEDIN-HERE" target="_blank" class="contact-item__value">LinkedIn Profile →</a>
             </div>
           </div>
 
-          <a href="assets/files/MdAjimHossain_CV.pdf" class="btn btn--primary contact-cv-btn" target="_blank" download>
+          <a href="assets/files/MdAjimHossain_CV.pdf" class="btn btn--navy contact-cv-btn" target="_blank" download>
             Download CV ↓
           </a>
         </div>
 
-        <!-- CONTACT FORM -->
         <div class="contact-form-wrap reveal-up" style="--d:0.2s">
           <h3 class="contact-form-wrap__title">Send a Message</h3>
-          <p class="contact-form-wrap__note">Note: This form uses your default email client (mailto). For direct contact, email the addresses on the left.</p>
+          <p class="contact-form-wrap__note">This form opens your email client with a pre-filled message. For direct contact, use the email addresses on the left.</p>
           <div class="contact-form">
             <div class="form-group">
               <label class="form-label" for="name">Your Name</label>
@@ -113,7 +113,7 @@
               <label class="form-label" for="message">Message</label>
               <textarea class="form-input form-textarea" id="message" rows="5" placeholder="Hello Ajim, I'm reaching out about..."></textarea>
             </div>
-            <button class="btn btn--primary" id="sendBtn" onclick="sendEmail()">Send Message →</button>
+            <button class="btn btn--primary" onclick="sendEmail()">Send Message →</button>
           </div>
         </div>
 
@@ -127,6 +127,7 @@
         <p class="footer__name">Md. Ajim Hossain</p>
         <nav class="footer__nav">
           <a href="index.html">Home</a>
+          <a href="about.html">About</a>
           <a href="research.html">Research</a>
           <a href="leadership.html">Leadership</a>
           <a href="skills.html">Skills</a>
@@ -140,16 +141,16 @@
   <script src="assets/js/main.js"></script>
   <script>
     function sendEmail() {
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const subject = document.getElementById('subject').value;
-      const message = document.getElementById('message').value;
+      const name    = document.getElementById('name').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
       if (!name || !email || !message) {
-        alert('Please fill in all required fields.');
+        alert('Please fill in your name, email, and message.');
         return;
       }
-      const mailto = `mailto:ajim.che.buet@gmail.com?subject=${encodeURIComponent(subject || 'Contact from Portfolio')}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message)}`;
-      window.location.href = mailto;
+      const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+      window.location.href = `mailto:ajim.che.buet@gmail.com?subject=${encodeURIComponent(subject || 'Message from Portfolio')}&body=${encodeURIComponent(body)}`;
     }
   </script>
 </body>
