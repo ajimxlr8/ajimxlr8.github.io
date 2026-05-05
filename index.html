@@ -10,7 +10,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">AH<span class="nav__dot">.</span></a>
@@ -19,6 +18,7 @@
       </button>
       <ul class="nav__links" id="navLinks">
         <li><a href="index.html" class="nav__link active">Home</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
         <li><a href="research.html" class="nav__link">Research</a></li>
         <li><a href="leadership.html" class="nav__link">Leadership</a></li>
         <li><a href="skills.html" class="nav__link">Skills</a></li>
@@ -28,7 +28,6 @@
     </div>
   </nav>
 
-  <!-- HERO -->
   <header class="hero">
     <div class="hero__bg">
       <div class="hero__orb hero__orb--1"></div>
@@ -36,39 +35,57 @@
       <div class="hero__grid"></div>
     </div>
     <div class="hero__content container">
-      <div class="hero__eyebrow reveal-up" style="--d:0.1s">
-        <span class="hero__tag">B.Sc. Chemical Engineering · BUET</span>
-      </div>
-      <h1 class="hero__name reveal-up" style="--d:0.25s">
-        Md. Ajim<br><em>Hossain</em>
-      </h1>
-      <p class="hero__tagline reveal-up" style="--d:0.4s">
-        Researcher · Student Leader · Aspiring Engineer
-      </p>
-      <p class="hero__bio reveal-up" style="--d:0.55s">
-        Motivated chemical engineering student at BUET with a CGPA of 3.78/4.00, 
-        specializing in biosensor diagnostics, CRISPR-based platforms, and 
-        wastewater treatment. Regional Chair at AIChE Southern Asia.
-      </p>
-      <div class="hero__actions reveal-up" style="--d:0.7s">
-        <a href="research.html" class="btn btn--primary">View Research</a>
-        <a href="contact.html" class="btn btn--ghost">Get in Touch</a>
-      </div>
-      <div class="hero__stats reveal-up" style="--d:0.85s">
-        <div class="stat">
-          <span class="stat__num">3.78</span>
-          <span class="stat__label">CGPA / 4.00</span>
+      <div class="hero__two-col">
+
+        <div class="hero__left">
+          <div class="hero__eyebrow reveal-up" style="--d:0.1s">
+            <span class="hero__tag">B.Sc. Chemical Engineering · BUET</span>
+          </div>
+          <h1 class="hero__name reveal-up" style="--d:0.25s">
+            Md. Ajim<br><em>Hossain</em>
+          </h1>
+          <p class="hero__tagline reveal-up" style="--d:0.4s">
+            Researcher · Student Leader · Aspiring Engineer
+          </p>
+          <p class="hero__bio reveal-up" style="--d:0.55s">
+            Motivated chemical engineering student at BUET with a CGPA of 3.78/4.00,
+            specialising in biosensor diagnostics, CRISPR-based platforms, and
+            wastewater treatment. Regional Chair at AIChE Southern Asia.
+          </p>
+          <div class="hero__actions reveal-up" style="--d:0.7s">
+            <a href="research.html" class="btn btn--primary">View Research</a>
+            <a href="contact.html" class="btn btn--ghost">Get in Touch</a>
+          </div>
+          <div class="hero__stats reveal-up" style="--d:0.85s">
+            <div class="stat">
+              <span class="stat__num">3.78</span>
+              <span class="stat__label">CGPA / 4.00</span>
+            </div>
+            <div class="stat__divider"></div>
+            <div class="stat">
+              <span class="stat__num">50+</span>
+              <span class="stat__label">AIChE Chapters</span>
+            </div>
+            <div class="stat__divider"></div>
+            <div class="stat">
+              <span class="stat__num">2</span>
+              <span class="stat__label">Research Groups</span>
+            </div>
+          </div>
         </div>
-        <div class="stat__divider"></div>
-        <div class="stat">
-          <span class="stat__num">50+</span>
-          <span class="stat__label">AIChE Chapters Led</span>
+
+        <!-- PROFILE PHOTO — save as assets/images/profile.jpg (square crop, min 600×600px) -->
+        <div class="hero__photo-wrap reveal-up" style="--d:0.3s">
+          <div class="hero__photo-frame">
+            <img src="assets/images/profile.jpg" alt="Md. Ajim Hossain" class="hero__photo" />
+            <div class="hero__photo-placeholder">
+              <div class="icon">👤</div>
+              <p>Your profile photo here<br><code>assets/images/profile.jpg</code></p>
+            </div>
+          </div>
+          <div class="hero__photo-badge">BUET · Dhaka, BD</div>
         </div>
-        <div class="stat__divider"></div>
-        <div class="stat">
-          <span class="stat__num">2</span>
-          <span class="stat__label">Research Groups</span>
-        </div>
+
       </div>
     </div>
     <div class="hero__scroll">
@@ -77,72 +94,54 @@
     </div>
   </header>
 
-  <!-- HIGHLIGHTS -->
   <section class="section highlights">
     <div class="container">
       <h2 class="section__title reveal-up">Highlights</h2>
       <div class="cards-grid">
-
-        <a href="research.html" class="card card--research reveal-up" style="--d:0.1s">
+        <a href="research.html" class="card reveal-up" style="--d:0.1s">
           <div class="card__icon">⬡</div>
           <h3 class="card__title">CRISPR Diagnostics</h3>
-          <p class="card__body">Contributing to cutting-edge literature review on CRISPR-based diagnostic platforms at the POCT research group, BUET.</p>
+          <p class="card__body">Contributing to a literature review on CRISPR-based diagnostic platforms at the POCT research group, BUET.</p>
           <span class="card__arrow">→</span>
         </a>
-
-        <a href="research.html" class="card card--research reveal-up" style="--d:0.2s">
+        <a href="research.html" class="card reveal-up" style="--d:0.2s">
           <div class="card__icon">◈</div>
           <h3 class="card__title">Wastewater Treatment</h3>
-          <p class="card__body">Synthesized cellulose oxalate sorbent from waste newspaper to remove antibiotic residues from wastewater at ABRI.</p>
+          <p class="card__body">Synthesised cellulose oxalate sorbent from waste newspaper to remove antibiotic residues at ABRI.</p>
           <span class="card__arrow">→</span>
         </a>
-
-        <a href="leadership.html" class="card card--leadership reveal-up" style="--d:0.3s">
+        <a href="leadership.html" class="card reveal-up" style="--d:0.3s">
           <div class="card__icon">◎</div>
           <h3 class="card__title">AIChE Regional Chair</h3>
           <p class="card__body">Leading 6 liaisons across 50+ student chapters in Southern Asia as Regional Chair since August 2025.</p>
           <span class="card__arrow">→</span>
         </a>
-
-        <a href="skills.html" class="card card--skills reveal-up" style="--d:0.4s">
+        <a href="skills.html" class="card reveal-up" style="--d:0.4s">
           <div class="card__icon">◇</div>
           <h3 class="card__title">Technical Skills</h3>
           <p class="card__body">Proficient in Python, MATLAB, SPSS, Origin, UV spectrometer, FTIR and other analytical tools.</p>
           <span class="card__arrow">→</span>
         </a>
-
       </div>
     </div>
   </section>
 
-  <!-- AWARDS TICKER -->
   <div class="ticker">
     <div class="ticker__track">
-      <span>Dean's List Award</span>
-      <span class="ticker__dot">·</span>
-      <span>Merit Scholarship — 4 Semesters</span>
-      <span class="ticker__dot">·</span>
-      <span>CGPA 3.78 / 4.00</span>
-      <span class="ticker__dot">·</span>
-      <span>AIChE Regional Chair</span>
-      <span class="ticker__dot">·</span>
-      <span>BUET Chemical Engineering</span>
-      <span class="ticker__dot">·</span>
-      <span>Dean's List Award</span>
-      <span class="ticker__dot">·</span>
-      <span>Merit Scholarship — 4 Semesters</span>
-      <span class="ticker__dot">·</span>
-      <span>CGPA 3.78 / 4.00</span>
-      <span class="ticker__dot">·</span>
-      <span>AIChE Regional Chair</span>
-      <span class="ticker__dot">·</span>
-      <span>BUET Chemical Engineering</span>
-      <span class="ticker__dot">·</span>
+      <span>Dean's List Award</span><span class="ticker__dot">·</span>
+      <span>Merit Scholarship — 4 Semesters</span><span class="ticker__dot">·</span>
+      <span>CGPA 3.78 / 4.00</span><span class="ticker__dot">·</span>
+      <span>AIChE Regional Chair</span><span class="ticker__dot">·</span>
+      <span>BUET Chemical Engineering</span><span class="ticker__dot">·</span>
+      <span>Dean's List Award</span><span class="ticker__dot">·</span>
+      <span>Merit Scholarship — 4 Semesters</span><span class="ticker__dot">·</span>
+      <span>CGPA 3.78 / 4.00</span><span class="ticker__dot">·</span>
+      <span>AIChE Regional Chair</span><span class="ticker__dot">·</span>
+      <span>BUET Chemical Engineering</span><span class="ticker__dot">·</span>
     </div>
   </div>
 
-  <!-- EDUCATION -->
-  <section class="section education">
+  <section class="section">
     <div class="container">
       <h2 class="section__title reveal-up">Education</h2>
       <div class="edu-card reveal-up" style="--d:0.15s">
@@ -163,13 +162,13 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
         <p class="footer__name">Md. Ajim Hossain</p>
         <nav class="footer__nav">
           <a href="index.html">Home</a>
+          <a href="about.html">About</a>
           <a href="research.html">Research</a>
           <a href="leadership.html">Leadership</a>
           <a href="skills.html">Skills</a>
