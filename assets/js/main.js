@@ -1,116 +1,124 @@
-/* ============================================
-   AJIM HOSSAIN — main.js
-   ============================================ */
+/* =============================================
+   MD. AJIM HOSSAIN — main.js
+   ============================================= */
 
-// ---- NAV SCROLL STATE ----
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-}, { passive: true });
-
-// ---- MOBILE BURGER ----
-const burger = document.getElementById('burger');
-const navLinks = document.getElementById('navLinks');
-burger?.addEventListener('click', () => {
-  burger.classList.toggle('is-open');
-  navLinks.classList.toggle('is-open');
-});
-// Close nav when a link is clicked
-navLinks?.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    burger?.classList.remove('is-open');
-    navLinks.classList.remove('is-open');
-  });
-});
-
-// ---- INTERSECTION OBSERVER: REVEAL ----
-const revealEls = document.querySelectorAll('.reveal-up');
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in-view');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-revealEls.forEach(el => revealObserver.observe(el));
-
-// ---- SKILL BAR ANIMATION ----
-const skillBars = document.querySelectorAll('.skill-item__fill');
-if (skillBars.length) {
-  const barObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Small delay so the page reveal completes first
-        setTimeout(() => {
-          entry.target.classList.add('animated');
-        }, 200);
-        barObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  skillBars.forEach(bar => barObserver.observe(bar));
-}
-
-// ---- SMOOTH ACTIVE LINK HIGHLIGHT ----
-// Already handled by static .active class on each page
-// but we add a subtle underline draw on hover via CSS
-
-// ---- CURSOR: subtle gold dot on desktop ----
-if (window.matchMedia('(pointer: fine)').matches) {
-  const cursor = document.createElement('div');
-  cursor.style.cssText = `
-    position: fixed; pointer-events: none; z-index: 9999;
-    width: 8px; height: 8px; border-radius: 50%;
-    background: rgba(196,154,60,0.6);
-    top: 0; left: 0;
-    transition: transform 0.15s ease, opacity 0.2s;
-    mix-blend-mode: multiply;
-  `;
-  document.body.appendChild(cursor);
-  let mx = 0, my = 0;
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
-  });
-  document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
-  document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
-}
-
-// ---- STAGGER TIMELINE ITEMS ----
-const timelineItems = document.querySelectorAll('.timeline__item');
-timelineItems.forEach((item, i) => {
-  item.style.setProperty('--d', `${0.1 + i * 0.12}s`);
-  item.classList.add('reveal-up');
-  revealObserver.observe(item);
-});
-
-// ---- PAGE TRANSITION FADE-IN ----
-document.body.style.opacity = '0';
-document.body.style.transition = 'opacity 0.4s ease';
-requestAnimationFrame(() => {
+/* ---- PAGE FADE-IN ---- */
+document.documentElement.style.opacity = '0';
+document.documentElement.style.transition = 'opacity 0.4s ease';
+window.addEventListener('DOMContentLoaded', () => {
   requestAnimationFrame(() => {
-    document.body.style.opacity = '1';
+    requestAnimationFrame(() => {
+      document.documentElement.style.opacity = '1';
+    });
   });
 });
 
-// ---- NAV LINK PAGE TRANSITION ----
+/* ---- NAV SCROLL ---- */
+const nav = document.getElementById('nav');
+if (nav) {
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+/* ---- MOBILE BURGER ---- */
+const burger   = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+if (burger && navLinks) {
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('is-open');
+    navLinks.classList.toggle('is-open');
+  });
+  navLinks.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      burger.classList.remove('is-open');
+      navLinks.classList.remove('is-open');
+    })
+  );
+}
+
+/* ---- PAGE-TRANSITION LINKS ---- */
 document.querySelectorAll('a[href]').forEach(link => {
   const href = link.getAttribute('href');
   if (
-    href &&
-    !href.startsWith('#') &&
-    !href.startsWith('mailto') &&
-    !href.startsWith('tel') &&
-    !href.startsWith('http') &&
-    !link.hasAttribute('download') &&
-    link.target !== '_blank'
-  ) {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      document.body.style.opacity = '0';
-      setTimeout(() => { window.location.href = href; }, 350);
-    });
-  }
+    !href || href.startsWith('#') || href.startsWith('mailto')
+    || href.startsWith('tel') || href.startsWith('http')
+    || link.hasAttribute('download') || link.target === '_blank'
+  ) return;
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.documentElement.style.opacity = '0';
+    setTimeout(() => { window.location.href = href; }, 360);
+  });
 });
+
+/* ---- REVEAL ON SCROLL ---- */
+const revealEls = document.querySelectorAll('.reveal-up');
+if (revealEls.length) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+  revealEls.forEach(el => io.observe(el));
+}
+
+/* ---- SKILL BAR ANIMATION ---- */
+const bars = document.querySelectorAll('.skill-item__fill');
+if (bars.length) {
+  const barIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('animated'), 150);
+        barIO.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(b => barIO.observe(b));
+}
+
+/* ---- IMAGE FALLBACK (show placeholder when img fails to load) ---- */
+document.querySelectorAll('img').forEach(img => {
+  // If image is already broken on load
+  if (img.complete && img.naturalWidth === 0) {
+    img.style.display = 'none';
+  }
+  img.addEventListener('error', () => {
+    img.style.display = 'none';
+  });
+  img.addEventListener('load', () => {
+    // Hide placeholder sibling when image loads successfully
+    const ph = img.nextElementSibling;
+    if (ph && (
+      ph.classList.contains('hero__photo-placeholder') ||
+      ph.classList.contains('about-photo__placeholder') ||
+      ph.classList.contains('rproject__photo-placeholder') ||
+      ph.classList.contains('gallery-item__placeholder') ||
+      ph.classList.contains('lph-placeholder') ||
+      ph.classList.contains('tl-photo__placeholder')
+    )) {
+      ph.style.display = 'none';
+    }
+    img.style.display = '';
+  });
+});
+
+/* ---- SUBTLE GOLD CURSOR DOT (desktop only) ---- */
+if (window.matchMedia('(pointer: fine)').matches) {
+  const dot = document.createElement('div');
+  dot.style.cssText = [
+    'position:fixed', 'pointer-events:none', 'z-index:9999',
+    'width:7px', 'height:7px', 'border-radius:50%',
+    'background:rgba(184,151,90,0.55)',
+    'top:0', 'left:0',
+    'transition:transform 0.12s ease',
+    'mix-blend-mode:multiply',
+  ].join(';');
+  document.body.appendChild(dot);
+  document.addEventListener('mousemove', e => {
+    dot.style.transform = `translate(${e.clientX - 3.5}px,${e.clientY - 3.5}px)`;
+  });
+}
