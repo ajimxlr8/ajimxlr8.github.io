@@ -3,32 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Md. Ajim Hossain | Chemical Engineering</title>
-  <link rel="stylesheet" href="assets/css/main.css" />
+  <title>Md. Ajim Hossain | Chemical Engineering Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+  <!-- ================================================
+       NAVIGATION
+       ================================================ -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
-      <a href="index.html" class="nav__logo">AH<span class="nav__dot">.</span></a>
-      <button class="nav__burger" id="burger" aria-label="Menu">
+      <a href="#hero" class="nav__logo">AH<span class="nav__dot">.</span></a>
+      <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav__links" id="navLinks">
-        <li><a href="index.html" class="nav__link active">Home</a></li>
-        <li><a href="about.html" class="nav__link">About</a></li>
-        <li><a href="research.html" class="nav__link">Research</a></li>
-        <li><a href="leadership.html" class="nav__link">Leadership</a></li>
-        <li><a href="skills.html" class="nav__link">Skills</a></li>
-        <li><a href="contact.html" class="nav__link">Contact</a></li>
-        <li><a href="assets/files/MdAjimHossain_CV.pdf" class="nav__link nav__link--cta" target="_blank">CV ↗</a></li>
+        <li><a href="#hero"       class="nav__link" data-section="hero">Home</a></li>
+        <li><a href="#about"      class="nav__link" data-section="about">About</a></li>
+        <li><a href="#education"  class="nav__link" data-section="education">Education</a></li>
+        <li><a href="#research"   class="nav__link" data-section="research">Research</a></li>
+        <li><a href="#leadership" class="nav__link" data-section="leadership">Leadership</a></li>
+        <li><a href="#skills"     class="nav__link" data-section="skills">Skills</a></li>
+        <li><a href="#contact"    class="nav__link" data-section="contact">Contact</a></li>
+        <li><a href="assets/files/MdAjimHossain_CV.pdf" class="nav__link nav__link--cta" target="_blank" rel="noopener">CV ↗</a></li>
       </ul>
     </div>
   </nav>
 
-  <header class="hero">
+  <!-- ================================================
+       SECTION 1 · HERO
+       ================================================ -->
+  <section id="hero" class="hero">
     <div class="hero__bg">
       <div class="hero__orb hero__orb--1"></div>
       <div class="hero__orb hero__orb--2"></div>
@@ -53,8 +60,8 @@
             wastewater treatment. Regional Chair at AIChE Southern Asia.
           </p>
           <div class="hero__actions reveal-up" style="--d:0.7s">
-            <a href="research.html" class="btn btn--primary">View Research</a>
-            <a href="contact.html" class="btn btn--ghost">Get in Touch</a>
+            <a href="#research" class="btn btn--primary">View Research</a>
+            <a href="#contact"  class="btn btn--ghost">Get in Touch</a>
           </div>
           <div class="hero__stats reveal-up" style="--d:0.85s">
             <div class="stat">
@@ -74,13 +81,17 @@
           </div>
         </div>
 
-        <!-- PROFILE PHOTO — save as assets/images/profile.jpg (square crop, min 600×600px) -->
+        <!--
+          PROFILE PHOTO
+          Save as: assets/images/profile.jpg
+          Portrait orientation, minimum 600×800px recommended
+        -->
         <div class="hero__photo-wrap reveal-up" style="--d:0.3s">
           <div class="hero__photo-frame">
             <img src="assets/images/profile.jpg" alt="Md. Ajim Hossain" class="hero__photo" />
             <div class="hero__photo-placeholder">
-              <div class="icon">👤</div>
-              <p>Your profile photo here<br><code>assets/images/profile.jpg</code></p>
+              <div class="ph-icon">👤</div>
+              <p>Your profile photo<br><code>assets/images/profile.jpg</code><br><small>Portrait · min 600×800px</small></p>
             </div>
           </div>
           <div class="hero__photo-badge">BUET · Dhaka, BD</div>
@@ -88,45 +99,14 @@
 
       </div>
     </div>
-    <div class="hero__scroll">
+    <div class="hero__scroll" aria-hidden="true">
       <span>Scroll</span>
       <div class="hero__scroll-line"></div>
     </div>
-  </header>
-
-  <section class="section highlights">
-    <div class="container">
-      <h2 class="section__title reveal-up">Highlights</h2>
-      <div class="cards-grid">
-        <a href="research.html" class="card reveal-up" style="--d:0.1s">
-          <div class="card__icon">⬡</div>
-          <h3 class="card__title">CRISPR Diagnostics</h3>
-          <p class="card__body">Contributing to a literature review on CRISPR-based diagnostic platforms at the POCT research group, BUET.</p>
-          <span class="card__arrow">→</span>
-        </a>
-        <a href="research.html" class="card reveal-up" style="--d:0.2s">
-          <div class="card__icon">◈</div>
-          <h3 class="card__title">Wastewater Treatment</h3>
-          <p class="card__body">Synthesised cellulose oxalate sorbent from waste newspaper to remove antibiotic residues at ABRI.</p>
-          <span class="card__arrow">→</span>
-        </a>
-        <a href="leadership.html" class="card reveal-up" style="--d:0.3s">
-          <div class="card__icon">◎</div>
-          <h3 class="card__title">AIChE Regional Chair</h3>
-          <p class="card__body">Leading 6 liaisons across 50+ student chapters in Southern Asia as Regional Chair since August 2025.</p>
-          <span class="card__arrow">→</span>
-        </a>
-        <a href="skills.html" class="card reveal-up" style="--d:0.4s">
-          <div class="card__icon">◇</div>
-          <h3 class="card__title">Technical Skills</h3>
-          <p class="card__body">Proficient in Python, MATLAB, SPSS, Origin, UV spectrometer, FTIR and other analytical tools.</p>
-          <span class="card__arrow">→</span>
-        </a>
-      </div>
-    </div>
   </section>
 
-  <div class="ticker">
+  <!-- AWARDS TICKER -->
+  <div class="ticker" aria-hidden="true">
     <div class="ticker__track">
       <span>Dean's List Award</span><span class="ticker__dot">·</span>
       <span>Merit Scholarship — 4 Semesters</span><span class="ticker__dot">·</span>
@@ -141,9 +121,112 @@
     </div>
   </div>
 
-  <section class="section">
+  <!-- ================================================
+       SECTION 2 · ABOUT
+       ================================================ -->
+  <section id="about" class="section section--cream">
     <div class="container">
-      <h2 class="section__title reveal-up">Education</h2>
+      <div class="section-label reveal-up">Who I Am</div>
+      <h2 class="section__title reveal-up" style="--d:0.05s">About <em>Me</em></h2>
+
+      <div class="about-layout">
+
+        <div class="about-photo-col reveal-up" style="--d:0.1s">
+          <!--
+            PRIMARY PROFILE PHOTO
+            Save as: assets/images/profile.jpg (portrait, 600×800px)
+          -->
+          <div class="about-photo-primary">
+            <img src="assets/images/profile.jpg" alt="Md. Ajim Hossain" class="about-photo__img" />
+            <div class="about-photo__placeholder">
+              <div class="ph-icon">👤</div>
+              <p>Profile Photo<br><code>assets/images/profile.jpg</code><br><small>Portrait · 600×800px</small></p>
+            </div>
+            <div class="about-photo-label">Md. Ajim Hossain</div>
+          </div>
+          <!--
+            SECONDARY PHOTO
+            Save as: assets/images/about-2.jpg (lab / campus / candid)
+          -->
+          <div class="about-photo-secondary">
+            <img src="assets/images/about-2.jpg" alt="Lab or campus photo" class="about-photo__img" />
+            <div class="about-photo__placeholder">
+              <div class="ph-icon">🔬</div>
+              <p>Lab / Campus Photo<br><code>assets/images/about-2.jpg</code></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text-col">
+          <h3 class="about-heading reveal-up" style="--d:0.15s">
+            Chemical Engineer,<br><em>Researcher &amp; Leader</em>
+          </h3>
+          <div class="about-body reveal-up" style="--d:0.25s">
+            <p>
+              I am an undergraduate student in Chemical Engineering at Bangladesh University of Engineering
+              and Technology (BUET), Dhaka — one of South Asia's most competitive engineering institutions.
+              I maintain a CGPA of 3.78/4.00, placing me on the Dean's List for two consecutive academic
+              years and earning merit scholarships for four semesters.
+            </p>
+            <p>
+              My research interests span two exciting frontiers: <strong>CRISPR-based diagnostic
+              platforms</strong> for point-of-care testing, and <strong>functional materials for
+              environmental remediation</strong>. I currently contribute to a literature review on
+              CRISPR/Cas systems at the POCT Research Group, while earlier work at ABRI focused on
+              synthesising cellulose oxalate sorbents from waste newspaper to tackle antibiotic pollution
+              in wastewater.
+            </p>
+            <p>
+              Beyond the laboratory, I am deeply committed to building scientific communities. As
+              Regional Chair of the AIChE Southern Asia Subcommittee, I lead a network of over 50
+              student chapters — coordinating events, mentoring liaisons, and fostering collaboration
+              among young engineers across the region.
+            </p>
+          </div>
+          <div class="about-details reveal-up" style="--d:0.35s">
+            <div class="about-detail-item">
+              <span class="about-detail-label">Institution</span>
+              <span class="about-detail-value">BUET, Dhaka</span>
+            </div>
+            <div class="about-detail-item">
+              <span class="about-detail-label">Department</span>
+              <span class="about-detail-value">Chemical Engineering</span>
+            </div>
+            <div class="about-detail-item">
+              <span class="about-detail-label">CGPA</span>
+              <span class="about-detail-value">3.78 / 4.00 (5 terms)</span>
+            </div>
+            <div class="about-detail-item">
+              <span class="about-detail-label">Location</span>
+              <span class="about-detail-value">Dhaka, Bangladesh</span>
+            </div>
+            <div class="about-detail-item">
+              <span class="about-detail-label">Languages</span>
+              <span class="about-detail-value">Bengali · English · Hindi</span>
+            </div>
+            <div class="about-detail-item">
+              <span class="about-detail-label">Email</span>
+              <span class="about-detail-value">ajim.che.buet@gmail.com</span>
+            </div>
+          </div>
+          <div class="about-actions reveal-up" style="--d:0.45s">
+            <a href="#research" class="btn btn--navy">My Research</a>
+            <a href="assets/files/MdAjimHossain_CV.pdf" class="btn btn--primary" target="_blank" download>Download CV ↓</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       SECTION 3 · EDUCATION
+       ================================================ -->
+  <section id="education" class="section section--white">
+    <div class="container">
+      <div class="section-label reveal-up">Academic Background</div>
+      <h2 class="section__title reveal-up" style="--d:0.05s">Education</h2>
+
       <div class="edu-card reveal-up" style="--d:0.15s">
         <div class="edu-card__left">
           <span class="edu-card__year">2022 —</span>
@@ -155,30 +238,553 @@
           <div class="edu-card__tags">
             <span class="tag">CGPA: 3.78 / 4.00</span>
             <span class="tag">Dean's List</span>
-            <span class="tag">Merit Scholarship</span>
+            <span class="tag">Merit Scholarship — 4 Semesters</span>
+          </div>
+          <div class="edu-achievements">
+            <div class="edu-ach-item">
+              <span class="edu-ach-icon">◆</span>
+              <div>
+                <strong>Dean's List Award</strong>
+                <p>Awarded for maintaining a high CGPA for two consecutive academic years</p>
+              </div>
+            </div>
+            <div class="edu-ach-item">
+              <span class="edu-ach-icon">◆</span>
+              <div>
+                <strong>Merit List Scholarship</strong>
+                <p>Awarded merit scholarship for four consecutive semesters based on academic performance</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ================================================
+       SECTION 4 · RESEARCH
+       ================================================ -->
+  <section id="research" class="section section--cream">
+    <div class="container">
+      <div class="section-label reveal-up">Academic Work</div>
+      <h2 class="section__title reveal-up" style="--d:0.05s">Research <em>Experience</em></h2>
+      <p class="section__sub reveal-up" style="--d:0.1s">
+        Exploring the intersection of chemical engineering, bioengineering, and diagnostic technologies.
+      </p>
+
+      <!-- Project 1 -->
+      <div class="rproject reveal-up" style="--d:0.15s">
+        <div class="rproject__header">
+          <div class="rproject__meta">
+            <span class="rproject__date">April 2025 — Present</span>
+            <span class="rproject__badge rproject__badge--active">Active</span>
+          </div>
+          <h3 class="rproject__title">CRISPR-Based Diagnostic Platforms</h3>
+          <p class="rproject__group">Points of Care Testing (POCT) Research Group · BUET</p>
+        </div>
+        <div class="rproject__body">
+          <!--
+            RESEARCH PHOTO 1
+            Save as: assets/images/research-1.jpg
+            Landscape 800×500px — e.g. CRISPR diagram, lab setup, screenshot
+          -->
+          <div class="rproject__photo-wrap">
+            <img src="assets/images/research-1.jpg" alt="CRISPR diagnostics research" class="rproject__photo" />
+            <div class="rproject__photo-placeholder">
+              <span class="ph-icon">🧬</span>
+              <p>Research photo or diagram<br><code>assets/images/research-1.jpg</code><br><small>800×500px landscape</small></p>
+            </div>
+          </div>
+          <div class="rproject__text">
+            <p>
+              Contributing to a structured literature review on CRISPR-based diagnostic platforms,
+              examining CRISPR classes, molecular mechanisms, and pioneering diagnostic technologies.
+              This work evaluates how CRISPR/Cas systems (Cas9, Cas12, Cas13) are being repurposed
+              from gene editing into highly sensitive nucleic acid detection platforms relevant to
+              point-of-care settings.
+            </p>
+            <div class="rproject__topics">
+              <h4>Key Topics</h4>
+              <div class="tag-list">
+                <span class="tag">CRISPR/Cas Systems</span>
+                <span class="tag">Nucleic Acid Detection</span>
+                <span class="tag">Point-of-Care Testing</span>
+                <span class="tag">Diagnostic Biosensors</span>
+                <span class="tag">Literature Review</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="rproject reveal-up" style="--d:0.2s">
+        <div class="rproject__header">
+          <div class="rproject__meta">
+            <span class="rproject__date">Feb 2024 — Mar 2025</span>
+            <span class="rproject__badge">Completed</span>
+          </div>
+          <h3 class="rproject__title">Cellulose Oxalate Sorbent for Antibiotic Removal</h3>
+          <p class="rproject__group">Applied Bioengineering Research Incubator (ABRI) · BUET</p>
+        </div>
+        <div class="rproject__body">
+          <!--
+            RESEARCH PHOTO 2
+            Save as: assets/images/research-2.jpg
+            Landscape 800×500px — e.g. lab bench, FTIR spectrum, UV spectrophotometer
+          -->
+          <div class="rproject__photo-wrap">
+            <img src="assets/images/research-2.jpg" alt="Sorbent synthesis" class="rproject__photo" />
+            <div class="rproject__photo-placeholder">
+              <span class="ph-icon">⚗️</span>
+              <p>Lab / experiment photo<br><code>assets/images/research-2.jpg</code><br><small>800×500px landscape</small></p>
+            </div>
+          </div>
+          <div class="rproject__text">
+            <p>
+              Synthesised a novel cellulose oxalate sorbent derived from waste newspaper through
+              targeted chemical modification. Characterised the material's adsorption behaviour for
+              removing antibiotic residues from simulated wastewater, contributing to sustainable
+              pharmaceutical wastewater treatment. Analytical work involved UV spectrophotometry
+              and FTIR characterisation.
+            </p>
+            <div class="rproject__topics">
+              <h4>Key Topics</h4>
+              <div class="tag-list">
+                <span class="tag">Cellulose Chemistry</span>
+                <span class="tag">Adsorption</span>
+                <span class="tag">Wastewater Treatment</span>
+                <span class="tag">FTIR Characterisation</span>
+                <span class="tag">UV Spectroscopy</span>
+                <span class="tag">Antibiotic Residues</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Research Interests -->
+      <div class="interests-block reveal-up" style="--d:0.25s">
+        <h3 class="interests-block__title">Research Interests</h3>
+        <div class="interests-grid">
+          <div class="interest-item"><span class="interest-icon">○</span><span>Biosensor Development</span></div>
+          <div class="interest-item"><span class="interest-icon">○</span><span>Environmental Engineering</span></div>
+          <div class="interest-item"><span class="interest-icon">○</span><span>Biomedical Diagnostics</span></div>
+          <div class="interest-item"><span class="interest-icon">○</span><span>CRISPR Technology</span></div>
+          <div class="interest-item"><span class="interest-icon">○</span><span>Wastewater Treatment</span></div>
+          <div class="interest-item"><span class="interest-icon">○</span><span>Functional Materials</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================
+       SECTION 5 · LEADERSHIP
+       ================================================ -->
+  <section id="leadership" class="section section--white">
+    <div class="container">
+      <div class="section-label reveal-up">Community &amp; Impact</div>
+      <h2 class="section__title reveal-up" style="--d:0.05s">Leadership <em>&amp; Service</em></h2>
+      <p class="section__sub reveal-up" style="--d:0.1s">
+        Building bridges between student communities across Southern Asia through the AIChE network.
+      </p>
+
+      <!--
+        LEADERSHIP BANNER PHOTO
+        Save as: assets/images/leadership-banner.jpg
+        Wide landscape 1200×500px — group photo, AIChE event, conference
+      -->
+      <div class="leadership-photo-wrap reveal-up" style="--d:0.12s">
+        <img src="assets/images/leadership-banner.jpg" alt="AIChE leadership event" />
+        <div class="lph-placeholder">
+          <span class="ph-icon">🎙️</span>
+          <p>Team / Event Banner Photo<br>
+             <code>assets/images/leadership-banner.jpg</code><br>
+             <small>Recommended: 1200×500px landscape</small>
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline__item reveal-up" style="--d:0.1s">
+          <div class="timeline__marker timeline__marker--current"></div>
+          <div class="timeline__connector"></div>
+          <div class="timeline__header">
+            <h3 class="timeline__role">Regional Chair</h3>
+            <span class="timeline__period">Aug 2025 — Present</span>
+          </div>
+          <p class="timeline__org">Southern Asia Regional Subcommittee, AIChE</p>
+          <ul class="timeline__points">
+            <li>Leading 6 regional liaisons to coordinate communication across 50+ student chapters in Southern Asia</li>
+            <li>Developing strategic frameworks to enhance regional engagement and inter-chapter collaboration</li>
+            <li>Representing the region in international AIChE subcommittee meetings and policy discussions</li>
+          </ul>
+          <div class="timeline__impact">
+            <div class="impact-num"><span>6</span>Liaisons Led</div>
+            <div class="impact-num"><span>50+</span>Chapters</div>
+          </div>
+          <!--
+            LEADERSHIP PHOTO 1
+            Save as: assets/images/leadership-1.jpg
+            e.g. regional meeting, award ceremony, virtual call screenshot
+          -->
+          <div class="tl-photo reveal-up" style="--d:0.15s">
+            <img src="assets/images/leadership-1.jpg" alt="Regional Chair duties" />
+            <div class="tl-photo__placeholder">
+              <span class="ph-icon">📋</span>
+              <p>Regional Chair Photo<br><code>assets/images/leadership-1.jpg</code></p>
+            </div>
+            <p class="tl-photo__caption">AIChE Southern Asia — Regional Chair, 2025</p>
+          </div>
+        </div>
+
+        <div class="timeline__item reveal-up" style="--d:0.2s">
+          <div class="timeline__marker"></div>
+          <div class="timeline__connector"></div>
+          <div class="timeline__header">
+            <h3 class="timeline__role">Regional Liaison</h3>
+            <span class="timeline__period">Aug 2024 — Aug 2025</span>
+          </div>
+          <p class="timeline__org">Southern Asia Regional Subcommittee, AIChE</p>
+          <ul class="timeline__points">
+            <li>Facilitated communication and resource-sharing between 14 chapters across the region</li>
+            <li>Developed engagement strategies to strengthen inter-chapter collaboration</li>
+            <li>Served as the primary point of contact for assigned chapters during annual events</li>
+          </ul>
+          <div class="timeline__impact">
+            <div class="impact-num"><span>14</span>Chapters</div>
+          </div>
+        </div>
+
+        <div class="timeline__item reveal-up" style="--d:0.3s">
+          <div class="timeline__marker timeline__marker--current"></div>
+          <div class="timeline__connector"></div>
+          <div class="timeline__header">
+            <h3 class="timeline__role">Co-Chair, Events Management Team</h3>
+            <span class="timeline__period">May 2025 — Present</span>
+          </div>
+          <p class="timeline__org">BUET AIChE Student Chapter</p>
+          <ul class="timeline__points">
+            <li>Co-leading the events management team for the BUET AIChE Student Chapter</li>
+            <li>Overseeing planning, logistics, and execution of chapter events and academic programs</li>
+          </ul>
+          <!--
+            LEADERSHIP PHOTO 2
+            Save as: assets/images/leadership-2.jpg
+            e.g. Chemical Day, chapter meeting, stage photo
+          -->
+          <div class="tl-photo reveal-up" style="--d:0.35s">
+            <img src="assets/images/leadership-2.jpg" alt="BUET AIChE chapter event" />
+            <div class="tl-photo__placeholder">
+              <span class="ph-icon">🏛️</span>
+              <p>Chapter Event Photo<br><code>assets/images/leadership-2.jpg</code></p>
+            </div>
+            <p class="tl-photo__caption">BUET AIChE Student Chapter — Events Team</p>
+          </div>
+        </div>
+
+        <div class="timeline__item reveal-up" style="--d:0.4s">
+          <div class="timeline__marker"></div>
+          <div class="timeline__header">
+            <h3 class="timeline__role">Executive, Events Management Team</h3>
+            <span class="timeline__period">Feb 2024 — May 2025</span>
+          </div>
+          <p class="timeline__org">BUET AIChE Student Chapter</p>
+          <ul class="timeline__points">
+            <li>Organised and managed chapter events, serving as invigilator for academic competitions</li>
+            <li>Coordinated with team members to ensure smooth execution of chapter activities and outreach</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Volunteering -->
+      <div class="vol-section reveal-up" style="--d:0.1s">
+        <h3 class="vol-section__title">Volunteering</h3>
+        <div class="vol-grid">
+          <div class="vol-item">
+            <span class="vol-icon">◇</span>
+            <div>
+              <strong>Chemical Day 2023, 2023–24, 2024</strong>
+              <p>Volunteered in organising the annual Chemical Engineering Day at BUET across three editions</p>
+            </div>
+          </div>
+          <div class="vol-item">
+            <span class="vol-icon">◇</span>
+            <div>
+              <strong>US Edu-Fair 2024</strong>
+              <p>Co-ordinated 5 volunteers at the US Education Fair held in Dhaka, Bangladesh</p>
+            </div>
+          </div>
+          <div class="vol-item">
+            <span class="vol-icon">◇</span>
+            <div>
+              <strong>Environment Day 2023</strong>
+              <p>Aided in the arrangement and activities of BUET's Environment Day celebration</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================
+       SECTION 6 · SKILLS
+       ================================================ -->
+  <section id="skills" class="section section--cream">
+    <div class="container">
+      <div class="section-label reveal-up">Toolkit</div>
+      <h2 class="section__title reveal-up" style="--d:0.05s">Technical <em>Skills</em></h2>
+      <p class="section__sub reveal-up" style="--d:0.1s">
+        A combination of analytical, computational, and laboratory proficiencies built through coursework and research.
+      </p>
+
+      <div class="skills-grid">
+        <div class="skill-category reveal-up" style="--d:0.1s">
+          <div class="skill-category__icon">◎</div>
+          <h3 class="skill-category__title">Data Analysis</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-item__name">SPSS</span>
+              <div class="skill-item__bar"><div class="skill-item__fill" style="--w:85%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-item__name">Origin</span>
+              <div class="skill-item__bar"><div class="skill-item__fill" style="--w:80%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-item__name">Microsoft Excel</span>
+              <div class="skill-item__bar"><div class="skill-item__fill" style="--w:90%"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-category reveal-up" style="--d:0.2s">
+          <div class="skill-category__icon">⬡</div>
+          <h3 class="skill-category__title">Programming</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-item__name">Python</span>
+              <div class="skill-item__bar"><div class="skill-item__fill" style="--w:75%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-item__name">MATLAB</span>
+              <div class="skill-item__bar"><div class="skill-item__fill" style="--w:70%"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-category reveal-up" style="--d:0.3s">
+          <div class="skill-category__icon">◈</div>
+          <h3 class="skill-category__title">Laboratory &amp; Research</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-item__name">UV Spectrometer</span>
+              <div class="skill-item__bar"><div class="skill-item__fill" style="--w:85%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-item__name">FTIR Analysis</span>
+              <div class="skill-item__bar"><div class="skill-item__fill" style="--w:80%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-item__name">Literature Review</span>
+              <div class="skill-item__bar"><div class="skill-item__fill" style="--w:90%"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-category reveal-up" style="--d:0.4s">
+          <div class="skill-category__icon">◇</div>
+          <h3 class="skill-category__title">Office &amp; Productivity</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-item__name">Microsoft Word</span>
+              <div class="skill-item__bar"><div class="skill-item__fill" style="--w:95%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-item__name">Microsoft PowerPoint</span>
+              <div class="skill-item__bar"><div class="skill-item__fill" style="--w:90%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lang-section reveal-up" style="--d:0.5s">
+        <h3 class="lang-section__title">Languages</h3>
+        <div class="lang-grid">
+          <div class="lang-item"><span class="lang-flag">🇧🇩</span><div><strong>Bengali</strong><p>Native</p></div></div>
+          <div class="lang-item"><span class="lang-flag">🇬🇧</span><div><strong>English</strong><p>Professional Proficiency</p></div></div>
+          <div class="lang-item"><span class="lang-flag">🇮🇳</span><div><strong>Hindi</strong><p>Conversational</p></div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================
+       SECTION 7 · GALLERY
+       ================================================ -->
+  <section id="gallery" class="section section--white">
+    <div class="container">
+      <div class="section-label reveal-up">Moments</div>
+      <h2 class="section__title reveal-up" style="--d:0.05s">Gallery</h2>
+      <p class="gallery-note reveal-up" style="--d:0.1s">
+        Save your photos to <code>assets/images/</code> — they appear here automatically once uploaded.
+      </p>
+      <div class="gallery-grid">
+        <!--
+          GALLERY PHOTO 1 — lab work / experiment
+          Save as: assets/images/gallery-1.jpg
+        -->
+        <div class="gallery-item reveal-up" style="--d:0.1s">
+          <div class="gallery-item__frame">
+            <img src="assets/images/gallery-1.jpg" alt="Research lab" class="gallery-item__img" />
+            <div class="gallery-item__placeholder">
+              <span class="ph-icon">🔬</span>
+              <p>Lab Photo<br><code>gallery-1.jpg</code></p>
+            </div>
+          </div>
+          <p class="gallery-item__caption">Research Lab · BUET</p>
+        </div>
+        <!--
+          GALLERY PHOTO 2 — AIChE event / conference
+          Save as: assets/images/gallery-2.jpg
+        -->
+        <div class="gallery-item reveal-up" style="--d:0.2s">
+          <div class="gallery-item__frame">
+            <img src="assets/images/gallery-2.jpg" alt="AIChE event" class="gallery-item__img" />
+            <div class="gallery-item__placeholder">
+              <span class="ph-icon">🎙️</span>
+              <p>Event Photo<br><code>gallery-2.jpg</code></p>
+            </div>
+          </div>
+          <p class="gallery-item__caption">AIChE Regional Event</p>
+        </div>
+        <!--
+          GALLERY PHOTO 3 — campus / team / ceremony
+          Save as: assets/images/gallery-3.jpg
+        -->
+        <div class="gallery-item reveal-up" style="--d:0.3s">
+          <div class="gallery-item__frame">
+            <img src="assets/images/gallery-3.jpg" alt="Campus or team" class="gallery-item__img" />
+            <div class="gallery-item__placeholder">
+              <span class="ph-icon">🏫</span>
+              <p>Campus / Team<br><code>gallery-3.jpg</code></p>
+            </div>
+          </div>
+          <p class="gallery-item__caption">BUET Campus</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       SECTION 8 · CONTACT
+       ================================================ -->
+  <section id="contact" class="section section--navy">
+    <div class="container">
+      <div class="section-label section-label--light reveal-up">Let's Connect</div>
+      <h2 class="section__title section__title--light reveal-up" style="--d:0.05s">Get in <em>Touch</em></h2>
+      <p class="section__sub section__sub--light reveal-up" style="--d:0.1s">
+        Open to research collaborations, academic discussions, and professional opportunities.
+      </p>
+
+      <div class="contact-layout">
+
+        <div class="contact-info reveal-up" style="--d:0.15s">
+          <h3 class="contact-info__title">Contact Details</h3>
+          <div class="contact-item">
+            <span class="contact-item__icon">✉</span>
+            <div>
+              <p class="contact-item__label">Primary Email</p>
+              <a href="mailto:ajim.che.buet@gmail.com" class="contact-item__value">ajim.che.buet@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item__icon">✉</span>
+            <div>
+              <p class="contact-item__label">University Email</p>
+              <a href="mailto:2102002@che.buet.ac.bd" class="contact-item__value">2102002@che.buet.ac.bd</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item__icon">☏</span>
+            <div>
+              <p class="contact-item__label">Phone</p>
+              <a href="tel:+8801571378557" class="contact-item__value">+880-1571-378557</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item__icon">⌖</span>
+            <div>
+              <p class="contact-item__label">Location</p>
+              <p class="contact-item__value">Titumir Hall, BUET, Dhaka, Bangladesh</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item__icon">in</span>
+            <div>
+              <p class="contact-item__label">LinkedIn</p>
+              <!-- Replace with your actual LinkedIn URL -->
+              <a href="https://linkedin.com/in/YOUR-LINKEDIN-HERE" target="_blank" rel="noopener" class="contact-item__value">LinkedIn Profile →</a>
+            </div>
+          </div>
+          <a href="assets/files/MdAjimHossain_CV.pdf" class="btn btn--champagne contact-cv-btn" target="_blank" download>
+            Download CV ↓
+          </a>
+        </div>
+
+        <div class="contact-form-wrap reveal-up" style="--d:0.2s">
+          <h3 class="contact-form-wrap__title">Send a Message</h3>
+          <p class="contact-form-wrap__note">
+            This form opens your email client with a pre-filled message. For direct contact, use the addresses on the left.
+          </p>
+          <div class="contact-form">
+            <div class="form-group">
+              <label class="form-label" for="cf-name">Your Name</label>
+              <input class="form-input" type="text" id="cf-name" placeholder="Dr. Jane Smith" autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-email">Your Email</label>
+              <input class="form-input" type="email" id="cf-email" placeholder="jane@university.edu" autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-subject">Subject</label>
+              <input class="form-input" type="text" id="cf-subject" placeholder="Research Collaboration" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-message">Message</label>
+              <textarea class="form-input form-textarea" id="cf-message" rows="5" placeholder="Hello Ajim, I'm reaching out about…"></textarea>
+            </div>
+            <button class="btn btn--champagne" onclick="sendEmail()">Send Message →</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       FOOTER
+       ================================================ -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
         <p class="footer__name">Md. Ajim Hossain</p>
-        <nav class="footer__nav">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="research.html">Research</a>
-          <a href="leadership.html">Leadership</a>
-          <a href="skills.html">Skills</a>
-          <a href="contact.html">Contact</a>
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#education">Education</a>
+          <a href="#research">Research</a>
+          <a href="#leadership">Leadership</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
         </nav>
         <p class="footer__copy">© 2025 Md. Ajim Hossain · BUET ChE</p>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
