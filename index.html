@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md. Ajim Hossain | Chemical Engineering & Sustainability Portfolio</title>
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    /* 
+    ============================================================
+    1. BRANDING & SYSTEM
+    ============================================================ 
+    */
+    :root {
+      --navy:        #1B2A4A; /* Headings */
+      --navy-mid:    #243558; 
+      --navy-soft:   #2E4270;
+      --slate:       #4A6080; /* Body Text */
+      --slate-light: #7A95B0; /* Secondary Info */
+      --cream:       #FAF8F4; /* Primary BG */
+      --cream-2:     #F2EEE6; /* Alternate BG */
+      --cream-3:     #E4DDD3; /* Dividers */
+      --champagne:   #B8975A; /* Highlights */
+      --white:       #FFFFFF;
+
+      --nav-h:  75px;
+      --radius: 4px;
+      --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+    }
+
+    /* 
+    ============================================================
+    2. CORE STYLES
+    ============================================================ 
+    */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--slate);
+      font-size: 16px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; transition: 0.3s; }
+    ul { list-style: none; }
+    
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 90px 0; }
+    .section--cream { background: var(--cream-2); border-top: 1px solid var(--cream-3); border-bottom: 1px solid var(--cream-3); }
+
+    /* Reveal Animation */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* 
+    ============================================================
+    3. TYPOGRAPHY
+    ============================================================ 
+    */
+    h1, h2, h3, h4 { color: var(--navy); font-family: var(--font-display); font-weight: 300; line-height: 1.1; }
+    h1 em, h2 em, h3 em { font-style: italic; color: var(--champagne); }
+
+    .section-label {
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--champagne);
+      text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.8rem; display: block;
+    }
+    .section-title { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 3rem; }
+    .body-text { color: var(--slate); font-size: 0.95rem; }
+    .body-text strong { color: var(--navy); font-weight: 500; }
+
+    /* 
+    ============================================================
+    4. NAVIGATION
+    ============================================================ 
+    */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: var(--nav-h); background: var(--navy);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.4s var(--ease);
+    }
+    .nav--scrolled {
+      height: 65px; background: rgba(27,42,74,0.97); backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+    .nav__logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--white); }
+    .nav__logo span { color: var(--champagne); }
+    .nav__links { display: flex; gap: 5px; align-items: center; }
+    .nav__link {
+      font-size: 0.7rem; text-transform: uppercase; color: rgba(255,255,255,0.6);
+      padding: 0.5rem 0.9rem; border-radius: var(--radius); letter-spacing: 0.1em;
+    }
+    .nav__link:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+    .nav__link--cta { background: var(--champagne) !important; color: var(--navy) !important; font-weight: 700; margin-left: 10px; }
+
+    /* 
+    ============================================================
+    5. HERO SECTION
+    ============================================================ 
+    */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; position: relative;
+      background: var(--navy); padding-top: var(--nav-h); overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 75% 40%, #243558 0%, #1B2A4A 60%, #141F37 100%);
+    }
+    .hero__grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(184,151,90,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(184,151,90,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero__content { position: relative; z-index: 10; width: 100%; padding: 4rem 0; }
+    .hero__two-col { display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: center; }
+    
+    .hero__name { font-size: clamp(3.5rem, 8vw, 6rem); color: var(--white); line-height: 0.95; margin-bottom: 1.5rem; }
+    .hero__bio { font-size: 1.1rem; color: rgba(255,255,255,0.65); max-width: 580px; margin-bottom: 2.5rem; }
+    .hero__bio strong { color: var(--white); font-weight: 500; }
+
+    .hero__stats { display: flex; gap: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; }
+    .stat__item b { font-family: var(--font-display); font-size: 2.2rem; display: block; color: var(--white); line-height: 1; margin-bottom: 5px; }
+    .stat__item span { font-family: var(--font-mono); font-size: 0.65rem; color: var(--champagne); text-transform: uppercase; letter-spacing: 1px; }
+
+    .hero__photo-frame {
+      aspect-ratio: 4/5; border-radius: var(--radius); overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      background: var(--navy-mid);
+    }
+    .hero__photo { width: 100%; height: 100%; object-fit: contain; }
+
+    /* 
+    ============================================================
+    6. TICKER
+    ============================================================ 
+    */
+    .ticker { background: var(--navy-mid); padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .ticker__track {
+      display: flex; gap: 4rem; animation: ticker 45s linear infinite; white-space: nowrap;
+      font-family: var(--font-mono); font-size: 0.7rem; color: rgba(255,255,255,0.3); text-transform: uppercase;
+    }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* 
+    ============================================================
+    7. ACADEMIC CARDS (Education, Research, Leadership)
+    ============================================================ 
+    */
+    .card { 
+        background: var(--white); 
+        border: 1px solid var(--cream-3); 
+        border-radius: var(--radius); 
+        display: flex; 
+        overflow: hidden; 
+        margin-bottom: 2rem; 
+        transition: 0.4s var(--ease); 
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(27,42,74,0.07); }
+    
+    /* Sidebar holds the dates/interval */
+    .card__sidebar { 
+        min-width: 170px; 
+        padding: 2.5rem; 
+        background: var(--cream-2); 
+        border-right: 1px solid var(--cream-3); 
+        text-align: right; 
+    }
+    .card__sidebar span { font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-light); display: block; white-space: nowrap; }
+    
+    .card__main { padding: 2.5rem; flex: 1; }
+    .card__title { font-size: 1.7rem; color: var(--navy); margin-bottom: 0.4rem; }
+    .card__org { color: var(--champagne); font-weight: 600; font-size: 0.95rem; margin-bottom: 1.2rem; display: block; }
+    
+    .card__list { margin-top: 1rem; }
+    .card__list li { position: relative; padding-left: 1.5rem; font-size: 0.9rem; margin-bottom: 0.6rem; color: var(--slate); }
+    .card__list li::before { content: "•"; position: absolute; left: 0; color: var(--champagne); font-weight: bold; }
+
+    .tag-group { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1rem; }
+    .tag { font-family: var(--font-mono); font-size: 0.68rem; padding: 3px 10px; border: 1px solid var(--cream-3); border-radius: 100px; color: var(--slate); background: var(--cream); }
+
+    /* 
+    ============================================================
+    8. GRID SYSTEM
+    ============================================================ 
+    */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .skill-cat h4 { font-family: var(--font-display); font-size: 1.5rem; color: var(--navy); border-bottom: 2px solid var(--champagne); display: inline-block; margin-bottom: 1.5rem; }
+    .skill-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .skill-list li { font-size: 0.9rem; color: var(--slate); border-left: 3px solid var(--cream-3); padding-left: 10px; }
+
+    .vol-item { background: var(--white); padding: 1.5rem; border: 1px solid var(--cream-3); border-left: 4px solid var(--champagne); border-radius: 4px; margin-bottom: 1rem; }
+    .vol-item strong { display: block; color: var(--navy); font-size: 0.95rem; margin-bottom: 4px; }
+    .vol-item p { font-size: 0.85rem; color: var(--slate); }
+
+    /* 
+    ============================================================
+    9. FOOTER & CONTACT
+    ============================================================ 
+    */
+    .footer { background: var(--navy); padding: 100px 0 60px; text-align: center; color: var(--white); }
+    .footer__title { font-family: var(--font-display); font-size: 3.2rem; margin-bottom: 3.5rem; }
+    .footer__title em { color: var(--champagne); font-style: italic; }
+
+    .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem; text-align: left; margin-bottom: 4rem; }
+    .contact-info b { display: block; color: var(--champagne); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; margin-bottom: 6px; }
+    .contact-info a, .contact-info p { font-size: 1.1rem; color: rgba(255,255,255,0.85); }
+    .contact-info a:hover { color: var(--champagne); }
+
+    .copy { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; font-size: 0.75rem; opacity: 0.3; letter-spacing: 2px; text-transform: uppercase; }
+
+    /* 
+    ============================================================
+    10. MOBILE RESPONSIVENESS (FIXED DATES HERE)
+    ============================================================ 
+    */
+    @media (max-width: 900px) {
+      .hero__two-col, .grid-2, .contact-grid { grid-template-columns: 1fr; }
+      .hero__image-area { order: -1; max-width: 320px; margin: 0 auto 3rem; }
+      
+      /* Fixed: Dates now take their own line on mobile */
+      .card { flex-direction: column; }
+      .card__sidebar { 
+          text-align: left; 
+          border-right: none; 
+          border-bottom: 1px solid var(--cream-3); 
+          padding: 1.2rem 1.5rem; 
+          min-width: 100%;
+      }
+      .card__sidebar span { display: inline-block; margin-right: 10px; }
+      .card__main { padding: 1.5rem; }
+      
+      .nav__links { display: none; }
+      .skill-list { grid-template-columns: 1fr; }
+      .footer__title { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="navbar">
+    <div class="container nav__inner">
+      <a href="#hero" class="nav__logo">Md. Ajim <span>Hossain</span></a>
+      <div class="nav__links">
+        <a href="#about" class="nav__link">About</a>
+        <a href="#education" class="nav__link">Education</a>
+        <a href="#research" class="nav__link">Research</a>
+        <a href="#leadership" class="nav__link">Leadership</a>
+        <a href="#skills" class="nav__link">Toolkit</a>
+        <a href="assets/files/MdAjimHossain_CV.pdf" class="nav__link nav__link--cta" target="_blank">Download CV ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header id="hero" class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__grid"></div>
+    <div class="container hero__content">
+      <div class="hero__two-col">
+        <div class="reveal">
+          <span class="section-label">Chemical Engineering · BUET</span>
+          <h1 class="hero__name">Md. Ajim <br><em>Hossain</em></h1>
+          <p class="hero__bio">
+            Motivated researcher at BUET focused on the <strong>Energy-Water-Waste nexus</strong>. Developing sustainable solutions through functional materials and molecular precision.
+          </p>
+          <div class="hero__stats">
+            <div class="stat__item"><b>3.78</b><span>CGPA / 4.00</span></div>
+            <div class="stat__item"><b>AIChE</b><span>Regional Chair</span></div>
+            <div class="stat__item"><b>2</b><span>Research Groups</span></div>
+          </div>
+        </div>
+        <div class="hero__image-area reveal" style="transition-delay: 0.2s;">
+          <div class="hero__photo-frame">
+            <img src="assets/images/profile.jpg" alt="Md. Ajim Hossain" class="hero__photo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker__track">
+      Dean's List Award — Consecutive 2 Years · Merit List Scholarship — 4 Semesters · Southern Asia Regional Chair · Waste-to-Energy Research · BUET Chemical Engineering · Dean's List Award — Consecutive 2 Years · Merit List Scholarship
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="section container">
+    <div class="reveal">
+      <span class="section-label">Academic Identity</span>
+      <h2 class="section-title">The <em>Vision</em></h2>
+      <div class="grid-2">
+        <p class="body-text" style="font-size: 1.2rem; color: var(--navy); line-height: 1.5;">
+          "I advocate for a circular economy where environmental liabilities are converted into tomorrow’s energy resources."
+        </p>
+        <p class="body-text">
+          As a Chemical Engineering student at BUET, my research focuses on materials science and molecular engineering. I am currently exploring <strong>Green Hydrogen</strong>, <strong>Biofuels</strong>, and <strong>Waste-to-Energy</strong> pathways to bridge the gap between lab innovation and industrial sustainability.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section section--cream">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Academic Background</span>
+        <h2 class="section-title">Education</h2>
+        
+        <div class="card reveal">
+          <div class="card__sidebar">
+            <span>July 2022 —</span>
+            <span>Present</span>
+          </div>
+          <div class="card__main">
+            <h3 class="card__title">B.Sc. in Chemical Engineering</h3>
+            <span class="card__org">Bangladesh University of Engineering and Technology (BUET)</span>
+            <div class="tag-group">
+              <span class="tag">CGPA: 3.78 / 4.00</span>
+              <span class="tag">Dean's List Award</span>
+              <span class="tag">Merit List Scholarship</span>
+            </div>
+            <ul class="card__list">
+              <li>Awarded Dean's List for maintaining high CGPA for two consecutive academic years.</li>
+              <li>Recipient of the Merit List Scholarship for four consecutive semesters.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research" class="section container">
+    <div class="reveal">
+      <span class="section-label">Inquiry & Analysis</span>
+      <h2 class="section-title">Research <em>Experience</em></h2>
+
+      <div class="card reveal">
+        <div class="card__sidebar">
+            <span>Feb 2024 —</span>
+            <span>Mar 2025</span>
+        </div>
+        <div class="card__main">
+          <span class="tag" style="background: var(--navy); color: white; border: none;">Environment & Sustainability</span>
+          <h3 class="card__title" style="margin-top: 10px;">Cellulose Oxalate Sorbent Synthesis</h3>
+          <span class="card__org">Applied Bioengineering Research Incubator (ABRI)</span>
+          <p class="body-text">Synthesized cellulose oxalate sorbent from waste newspaper. Evaluated its efficacy in removing antibiotic residues from wastewater using UV-Vis and FTIR characterization.</p>
+          <div class="tag-group" style="margin-top: 1rem;">
+            <span class="tag">FTIR Analysis</span><span class="tag">UV-Vis Spectroscopy</span><span class="tag">Waste-to-Value</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card__sidebar">
+            <span>April 2025 —</span>
+            <span>Present</span>
+        </div>
+        <div class="card__main">
+          <span class="tag" style="background: var(--navy); color: white; border: none;">Molecular Toolsets</span>
+          <h3 class="card__title" style="margin-top: 10px;">CRISPR-Based Diagnostic Platforms</h3>
+          <span class="card__org">Points of Care Testing (POCT) Research Group</span>
+          <p class="body-text">Conducting a structured literature review on CRISPR/Cas mechanisms. Framing CRISPR as a molecular toolset for future environmental biosensing and energy monitoring.</p>
+          <div class="tag-group" style="margin-top: 1rem;">
+            <span class="tag">Bio-Engineering</span><span class="tag">Literature Synthesis</span><span class="tag">Diagnostics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section id="leadership" class="section section--cream">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Community Impact</span>
+        <h2 class="section-title">Leadership <em>Impact</em></h2>
+
+        <div class="card reveal">
+          <div class="card__sidebar">
+              <span>Aug 2025 —</span>
+              <span>Present</span>
+          </div>
+          <div class="card__main">
+            <h3 class="card__title">Regional Chair, Southern Asia</h3>
+            <span class="card__org">AIChE Regional Subcommittee</span>
+            <ul class="card__list">
+              <li>Leading 6 regional liaisons to coordinate communication for 50+ student chapters.</li>
+              <li>Developing strategies to enhance regional engagement and global engineering collaboration.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card__sidebar">
+              <span>Aug 2024 —</span>
+              <span>Aug 2025</span>
+          </div>
+          <div class="card__main">
+            <h3 class="card__title">Regional Liaison, Southern Asia</h3>
+            <span class="card__org">AIChE Regional Subcommittee</span>
+            <ul class="card__list">
+              <li>Facilitated resource-sharing and strategy for 14 international chapters across the region.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card__sidebar">
+              <span>Feb 2024 —</span>
+              <span>Present</span>
+          </div>
+          <div class="card__main">
+            <h3 class="card__title">Co-Chair | Executive</h3>
+            <span class="card__org">BUET AIChE Student Chapter (Events)</span>
+            <ul class="card__list">
+              <li>Managing chapter logistics and academic competitions to foster professional engagement.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS & VOLUNTEERING -->
+  <section id="skills" class="section container">
+    <div class="reveal">
+      <span class="section-label">Toolkit</span>
+      <h2 class="section-title">Technical <em>Capabilities</em></h2>
+      
+      <div class="grid-2">
+        <div class="skill-cat">
+          <h4>Analytical & Lab</h4>
+          <ul class="skill-list">
+            <li>UV-Vis Spectrometer</li><li>FTIR Analysis</li><li>Material Synthesis</li><li>Literature Review</li><li>Adsorption Kinetics</li><li>Lab Safety</li>
+          </ul>
+        </div>
+        <div class="skill-cat">
+          <h4>Data & Computational</h4>
+          <ul class="skill-list">
+            <li>Python</li><li>MATLAB</li><li>OriginPro</li><li>SPSS</li><li>Advanced Excel</li><li>MS Office Suite</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top: 5rem;">
+        <h4 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 2rem; color: var(--navy);">Volunteering & Languages</h4>
+        <div class="grid-2">
+          <div>
+            <div class="vol-item"><strong>Chemical Day (2023–2024)</strong><p>Volunteered in organizing the annual flagship event of BUET ChE Department.</p></div>
+            <div class="vol-item"><strong>US Edu-Fair 2024</strong><p>Coordinated 5 volunteers to facilitate fair logistics and student assistance.</p></div>
+            <div class="vol-item"><strong>Environment Day 2023</strong><p>Aided in arrangement and management of BUET's Environment Day celebrations.</p></div>
+          </div>
+          <div class="vol-item">
+            <strong>Languages</strong>
+            <p>Bengali (Native) · English (Proficient) · Hindi (Conversational)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <footer id="contact" class="footer">
+    <div class="container reveal">
+      <h2 class="footer__title">Engineering the <em>Future Nexus</em></h2>
+      
+      <div class="contact-grid">
+        <div class="contact-info"><b>Primary Email</b><a href="mailto:ajim.che.buet@gmail.com">ajim.che.buet@gmail.com</a></div>
+        <div class="contact-info"><b>University Email</b><a href="mailto:2102002@che.buet.ac.bd">2102002@che.buet.ac.bd</a></div>
+        <div class="contact-info"><b>Phone</b><a href="tel:+8801571378557">+880-1571-378557</a></div>
+        <div class="contact-info"><b>Location</b><p>Titumir Hall-402, BUET, Dhaka</p></div>
+      </div>
+
+      <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank" class="nav__link nav__link--cta" style="padding: 1.2rem 3rem; font-size: 1rem; display: inline-block;">Connect on LinkedIn</a>
+      <p class="copy">© 2025 MD. AJIM HOSSAIN · BUET CHEMICAL ENGINEERING</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      const nav = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) nav.classList.add('nav--scrolled');
+        else nav.classList.remove('nav--scrolled');
+      });
+    });
+  </script>
+</body>
+</html>
